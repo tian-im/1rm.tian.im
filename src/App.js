@@ -6,24 +6,25 @@ import Input from './components/Input/Input';
 import Output from './components/Output/Output';
 import Modal from './components/Modal/Modal';
 
+const ESC_KEYCODE = 27;
+
 function App() {
   const [modal, setModal] = useState({});
-
   const openModal = (props) => setModal({ ...props, isOpen: true });
   const closeModal = () => setModal({});
-  const onKeyDown = (e) => { if (e.keyCode === 27 && modal.isOpen) { closeModal(); } }
+  const onKeyUp = (e) => { if (e.keyCode === ESC_KEYCODE && modal.isOpen) { closeModal(); } };
 
   const [data, setData] = useState({});
+  const onDataUpdate = (value) => setData({ ...data, ...value });
 
-  const setFormula = (formula) => setData({ ...data, formula: formula })
   return (
-    <div onKeyDown={onKeyDown} className="h-full">
+    <div onKeyUp={onKeyUp} className="h-full">
       <div className="flex content-center h-full">
-        <div className="w-1/2 self-center text-right">
-          <Formulas setFormula={setFormula} openModal={openModal}></Formulas>
-          <Input></Input>
+        <div className="w-1/2 self-center text-center">
+          <Formulas current={data.formula} onDataUpdate={onDataUpdate} openModal={openModal}></Formulas>
+          <Input {...data} onDataUpdate={onDataUpdate}></Input>
         </div>
-        <div className="w-1/2 self-center text-left">
+        <div className="w-1/2 self-center text-center">
           <Output></Output>
         </div>
       </div>
