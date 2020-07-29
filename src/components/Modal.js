@@ -8,23 +8,23 @@ export default function Modal({ isOpen, title, body, onClose }) {
   );
 
   return !isOpen ? null : (
-    <section className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center">
-      <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-      <div className="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+    <section className="modal fixed flex h-full items-center justify-center left-0 top-0 w-full">
+      <div className="modal-overlay absolute bg-gray-900 h-full opacity-50 w-full"></div>
+      <div className="modal-container bg-white md:max-w-md mx-auto overflow-y-auto rounded shadow-lg w-11/12 z-50">
 
-        <div onClick={onClose} className="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+        <div onClick={onClose} className="modal-close absolute cursor-pointer flex flex-col items-center mr-4 mt-4 right-0 text-sm text-white top-0 z-50">
           {closeIcon}
           <span className="text-sm">(Esc)</span>
         </div>
 
-        <div className="modal-content py-4 text-left px-6">
-          <div className="flex justify-between items-center pb-3">
+        <div className="modal-content px-6 py-4 text-left">
+          <div className="flex items-center justify-between pb-3">
             <p className="text-2xl font-bold">{title || "model title"}</p>
-            <div onClick={onClose} className="modal-close text-black cursor-pointer z-50">{closeIcon}</div>
+            <div onClick={onClose} className="modal-close cursor-pointer text-black z-50">{closeIcon}</div>
           </div>
           {body}
           <div className="flex justify-end pt-2">
-            <button onClick={onClose} className="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
+            <button onClick={onClose} className="modal-close bg-blue-500 focus:outline-none focus:shadow-outline font-bold hover:bg-blue-700 px-4 py-2 rounded text-white">Close</button>
           </div>
         </div>
       </div>
