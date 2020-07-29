@@ -24,7 +24,7 @@ export default function Input({ weight, unit, rep, formula, onChangeData, onOpen
             Rep
           </span>
           <input
-            className="appearance-none border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
+            className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
             value={rep}
             onChange={onChangeRep}
           />
@@ -37,13 +37,13 @@ export default function Input({ weight, unit, rep, formula, onChangeData, onOpen
           </span>
           <div className="flex">
             <input
-              className="appearance-none border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded-l shadow text-gray-700 w-full"
+              className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded-l shadow text-gray-700 w-full"
               value={weight}
               onChange={onChangeWeight}
             />
             <div className="relative">
               <select
-                className="appearance-none border border-l-none focus:outline-none focus:shadow-outline leading-tight pr-8 px-3 py-2 rounded-r shadow text-gray-700"
+                className="appearance-none bg-white border border-l-none focus:outline-none focus:shadow-outline leading-tight pr-8 px-3 py-2 rounded-r shadow text-gray-700"
                 value={unit}
                 onChange={onChangeUnit}
               >

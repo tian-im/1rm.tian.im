@@ -21,7 +21,7 @@ export default function Formulas({current, onChangeData, onOpenModal}) {
       </span>
       <div className="relative">
         <select
-          className="shadow appearance-none border rounded w-full py-2 px-3 pr-8 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight pr-8 px-3 py-2 rounded shadow text-gray-700 w-full"
           value={current}
           onChange={onChange}>
           {FORMULA_NAMES.map(name => <option key={name} value={name}>{CALCULATORS[name].modal.title}</option>)}
