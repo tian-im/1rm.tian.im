@@ -38,6 +38,7 @@ export default function Settings() {
           </span>
           <div className="relative">
             <select
+              data-testid="formulaSelect"
               className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight pr-8 px-3 py-2 rounded shadow text-gray-700 w-full"
               value={formula}
               onChange={onChangeFormula}>
@@ -62,8 +63,10 @@ export default function Settings() {
             Rows
           </span>
           <input
+            data-testid="rowsInput"
             type="number"
             className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
+            placeholder="Enter a number..."
             value={max}
             onChange={onChangeMax}
           />

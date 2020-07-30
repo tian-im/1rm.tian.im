@@ -24,13 +24,16 @@ export default function Input() {
           </span>
           <div className="flex">
             <input
+              data-testid="weightInput"
               type="number"
               className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded-l shadow text-gray-700 w-full"
+              placeholder="Enter a number..."
               value={weight}
               onChange={onChangeWeight}
             />
             <div className="relative">
               <select
+                data-testid="unitSelect"
                 className="appearance-none bg-white border border-l-none focus:outline-none focus:shadow-outline leading-tight pr-8 px-3 py-2 rounded-r shadow text-gray-700"
                 value={unit}
                 onChange={onChangeUnit}
@@ -46,19 +49,22 @@ export default function Input() {
         <span className="block mb-4 md:flex-1">
           <label
             className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
-            htmlFor="rep"
+            htmlFor="repInput"
           >
             Rep
           </label>
           <div className="relative pr-10">
             <input
-              id="rep"
+              id="repInput"
+              data-testid="repInput"
               type="number"
               className="appearance-none bg-white border flex-1 focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
+              placeholder="Enter a number..."
               value={rep}
               onChange={onChangeRep}
             />
             <span
+              title="Settings"
               onClick={onToggleSettings}
               className="absolute block cursor-pointer p-2 right-0 top-0"
             >
