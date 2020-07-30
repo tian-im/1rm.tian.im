@@ -18,7 +18,8 @@ export const CALCULATORS = {
 export const FORMULA_NAMES = Object.keys(CALCULATORS)
 export const UNITS = ['kg', 'lb']
 export const DEFAULT_DATA = {
-  weight: 100, rep: 1, unit: UNITS[0], max: 15, formula: FORMULA_NAMES[0],
+  weight: 100, rep: 1, unit: UNITS[0],
+  settingsOpened: false, max: 15, formula: FORMULA_NAMES[0],
   highlighted: []
 }
 export const DEFAULT_MODAL = {}

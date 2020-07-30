@@ -1,34 +1,22 @@
 import React, { useContext } from 'react';
-import Formulas from './Formulas';
+import Settings from './Settings';
 import { UNITS } from '../Constants';
 import { DataContext } from '../Contexts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faCog } from '@fortawesome/free-solid-svg-icons';
 
 export default function Input() {
   const { data, onChangeData } = useContext(DataContext);
-  const { weight, unit, rep } = data;
+  const { weight, unit, rep, settingsOpened } = data;
   const onChangeWeight = e => onChangeData({ weight: e.target.value && parseFloat(e.target.value) });
   const onChangeRep = e => onChangeData({ rep: e.target.value && parseFloat(e.target.value) });
   const onChangeUnit = e => onChangeData({ unit: e.target.value });
+  const onToggleSettings = e => onChangeData({ settingsOpened: !settingsOpened });
 
   return (
     <section>
       <div className="md:flex">
-        <Formulas />
         <label className="block mb-4 md:flex-1 md:mr-10">
-          <span
-            className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
-          >
-            Rep
-          </span>
-          <input
-            className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
-            value={rep}
-            onChange={onChangeRep}
-          />
-        </label>
-        <label className="block mb-4 md:flex-1">
           <span
             className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
           >
@@ -36,6 +24,7 @@ export default function Input() {
           </span>
           <div className="flex">
             <input
+              type="number"
               className="appearance-none bg-white border focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded-l shadow text-gray-700 w-full"
               value={weight}
               onChange={onChangeWeight}
@@ -49,12 +38,36 @@ export default function Input() {
                 {UNITS.map(unit => <option key={unit} value={unit}>{unit}</option>)}
               </select>
               <span className="absolute flex inset-y-0 items-center pointer-events-none px-2 right-0 text-gray-700">
-                <FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon>
+                <FontAwesomeIcon icon={faAngleDown} />
               </span>
             </div>
           </div>
         </label>
+        <span className="block mb-4 md:flex-1">
+          <label
+            className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
+            htmlFor="rep"
+          >
+            Rep
+          </label>
+          <div className="relative pr-10">
+            <input
+              id="rep"
+              type="number"
+              className="appearance-none bg-white border flex-1 focus:outline-none focus:shadow-outline leading-tight px-3 py-2 rounded shadow text-gray-700 w-full"
+              value={rep}
+              onChange={onChangeRep}
+            />
+            <span
+              onClick={onToggleSettings}
+              className="absolute block cursor-pointer p-2 right-0 top-0"
+            >
+              <FontAwesomeIcon icon={faCog} size="lg" />
+            </span>
+          </div>
+        </span>
       </div>
+      <Settings />
     </section>
   );
 }

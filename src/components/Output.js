@@ -11,8 +11,8 @@ export default function Output() {
   const calculator = CALCULATORS[formula];
   const oneRm = calculator.getOneRm(weight || 0, rep || 0);
 
-  const isHighlighted = (rep) => highlighted.indexOf(rep) >= 0;
-  const onHighlight = (rep) => {
+  const isHighlighted = rep => highlighted.indexOf(rep) >= 0;
+  const onHighlight = rep => {
     return () => {
       const index = highlighted.indexOf(rep);
       if (index >= 0) { highlighted.splice(index, 1) }
