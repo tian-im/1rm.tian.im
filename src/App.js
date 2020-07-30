@@ -3,9 +3,8 @@ import './App.scss';
 
 import React, { useState } from 'react';
 
-import {
-  ESC_KEYCODE, DEFAULT_MODAL, DEFAULT_DATA
-} from './Constants';
+import { ESC_KEYCODE, DEFAULT_MODAL, DEFAULT_DATA } from './Constants';
+import { DataContext, ModalContext } from './Contexts';
 
 import Navbar from './components/Navbar';
 import Input from './components/Input';
@@ -25,18 +24,22 @@ export default function App() {
   });
 
   return (
-    <div className="h-full">
-      <Navbar></Navbar>
-      <div className="content-center flex h-full">
-        <div className="m-4 md:m-auto md:max-w-screen-md md:mt-30 w-full">
-          <h1 className="text-gray-700 text-center text-2xl mb-8 font-bold">
-            One-Repetition Maximum Calculator
-          </h1>
-          <Input {...data} onChangeData={onChangeData} onOpenModal={onOpenModal}></Input>
-          <Output {...data}></Output>
+    <ModalContext.Provider value={{ modal, onOpenModal, onCloseModal }}>
+      <DataContext.Provider value={{ data, onChangeData }}>
+        <div className="h-full">
+          <Navbar />
+          <div className="content-center flex h-full">
+            <div className="m-4 md:m-auto md:max-w-screen-md md:mt-30 w-full">
+              <h1 className="text-gray-700 text-center text-2xl mb-8 font-bold">
+                One-Repetition Maximum Calculator
+              </h1>
+              <Input />
+              <Output />
+            </div>
+          </div>
+          <Modal />
         </div>
-      </div>
-      <Modal {...modal} onClose={onCloseModal}></Modal>
-    </div>
+      </DataContext.Provider>
+    </ModalContext.Provider>
   );
 }

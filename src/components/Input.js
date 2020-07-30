@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Formulas from './Formulas';
 import { UNITS } from '../Constants';
+import { DataContext } from '../Contexts';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
-export default function Input({ weight, unit, rep, formula, onChangeData, onOpenModal }) {
+export default function Input() {
+  const { data, onChangeData } = useContext(DataContext);
+  const { weight, unit, rep } = data;
   const onChangeWeight = e => onChangeData({ weight: e.target.value && parseFloat(e.target.value) });
   const onChangeRep = e => onChangeData({ rep: e.target.value && parseFloat(e.target.value) });
   const onChangeUnit = e => onChangeData({ unit: e.target.value });
@@ -12,11 +15,7 @@ export default function Input({ weight, unit, rep, formula, onChangeData, onOpen
   return (
     <section>
       <div className="md:flex">
-        <Formulas
-          current={formula}
-          onChangeData={onChangeData}
-          onOpenModal={onOpenModal}
-        />
+        <Formulas />
         <label className="block mb-4 md:flex-1 md:mr-10">
           <span
             className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
