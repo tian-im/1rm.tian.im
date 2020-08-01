@@ -17,9 +17,7 @@ export default function Input() {
     <section>
       <div className="md:flex">
         <label className="block mb-4 md:flex-1 md:mr-10">
-          <span
-            className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
-          >
+          <span className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase">
             Weight
           </span>
           <div className="flex">

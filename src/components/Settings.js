@@ -57,9 +57,7 @@ export default function Settings() {
           </div>
         </label>
         <label className="block mb-4 md:flex-1">
-          <span
-            className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase"
-          >
+          <span className="block font-bold mb-2 text-gray-700 text-xs tracking-wide uppercase">
             Rows
           </span>
           <input
@@ -70,6 +68,9 @@ export default function Settings() {
             value={max}
             onChange={onChangeMax}
           />
+          <span className="block mt-2 text-gray-500 text-xs tracking-wide">
+            Max rows to display.
+          </span>
         </label>
       </div>
     </section>

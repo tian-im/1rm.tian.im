@@ -53,6 +53,9 @@ export default function Output() {
           ))}
         </tbody>
       </table>
+      <span className="block mt-2 text-gray-500 text-xs tracking-wide">
+        You can highlight a row by clicking at it.
+      </span>
     </section>
   );
 }
