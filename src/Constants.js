@@ -24,3 +24,4 @@ export const DEFAULT_DATA = {
 }
 export const DEFAULT_MODAL = {}
 export const ESC_KEYCODE = 27
+export const LOCAL_DATA = '1rm.data'

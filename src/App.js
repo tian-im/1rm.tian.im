@@ -3,7 +3,7 @@ import './App.scss';
 
 import React, { useState } from 'react';
 
-import { ESC_KEYCODE, DEFAULT_MODAL, DEFAULT_DATA } from './Constants';
+import { ESC_KEYCODE, LOCAL_DATA, DEFAULT_MODAL, DEFAULT_DATA } from './Constants';
 import { DataContext, ModalContext } from './Contexts';
 
 import Navbar from './components/Navbar';
@@ -11,13 +11,26 @@ import Input from './components/Input';
 import Output from './components/Output';
 import Modal from './components/Modal';
 
+function toLocal(value) {
+  localStorage.setItem(LOCAL_DATA, JSON.stringify(value));
+  return value;
+}
+
+function fromLocal() {
+  try {
+    return JSON.parse(localStorage.getItem(LOCAL_DATA));
+  } catch (error) {
+    return null;
+  }
+}
+
 export default function App() {
   const [modal, setModal] = useState(DEFAULT_MODAL);
   const onOpenModal = props => setModal({ ...props, isOpen: true });
   const onCloseModal = () => setModal(DEFAULT_MODAL);
 
-  const [data, setData] = useState(DEFAULT_DATA);
-  const onChangeData = value => setData({ ...data, ...value });
+  const [data, setData] = useState(fromLocal() || DEFAULT_DATA);
+  const onChangeData = value => setData(toLocal({ ...data, ...value }));
 
   document.addEventListener('keyup', e => {
     if (e.keyCode === ESC_KEYCODE && modal.isOpen) { onCloseModal(); }
